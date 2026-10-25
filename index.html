@@ -1,0 +1,377 @@
+       <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! 🎂✨</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Canvas Confetti for party poppers -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-code { font-family: 'Fira Code', monospace; }
+        .github-dark { background-color: #0d1117; color: #c9d1d9; }
+        .github-card { background-color: #161b22; border: 1px solid #30363d; }
+        .github-btn { background-color: #21262d; border: 1px solid rgba(240,246,252,0.1); color: #c9d1d9; }
+        .github-btn:hover { background-color: #30363d; border-color: #8b949e; }
+        .github-green { background-color: #238636; color: #ffffff; }
+        .github-green:hover { background-color: #2ea043; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .floating { animation: float 3s ease-in-out infinite; }
+        @keyframes flicker {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(0.95); }
+        }
+        .flicker { animation: flicker 1s infinite; }
+    </style>
+</head>
+<body class="github-dark min-h-screen flex flex-col justify-between selection:bg-pink-500 selection:text-white">
+
+    <!-- PAGE 1: THE CATE & CAKE INTRO -->
+    <div id="page1" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0d1117] p-4 transition-opacity duration-700">
+        <div class="github-card p-8 rounded-2xl shadow-2xl max-w-md w-full text-center border border-[#30363d]">
+            <!-- Cute Cat & Cake Art -->
+            <div class="relative mb-6">
+                <div class="text-7xl mb-2 floating">🐱</div>
+                <div class="text-6xl inline-block relative">
+                    🎂
+                    <!-- Flame on Candles -->
+                    <div id="candles" class="absolute -top-6 left-1/2 transform -translate-x-1/2 flex space-x-1">
+                        <span class="text-xl flicker">🔥</span>
+                        <span class="text-xl flicker" style="animation-delay: 0.3s;">🔥</span>
+                        <span class="text-xl flicker" style="animation-delay: 0.6s;">🔥</span>
+                    </div>
+                </div>
+            </div>
+
+            <h1 class="text-2xl font-bold text-white mb-2">A Special Delivery for You!</h1>
+            <p class="text-gray-400 text-sm mb-6">Make a wish, and blow out the candles to unlock your surprise.</p>
+
+            <button onclick="blowCandles()" class="w-full py-3 px-6 rounded-xl font-semibold github-green shadow-lg transition transform active:scale-95 flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-wind"></i>
+                <span>Blow the Candles 💨🎂</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- PAGE 2: MAIN GITHUB PROFILE & HEARTFELT SURPRISE -->
+    <div id="page2" class="hidden opacity-0 transition-opacity duration-1000 flex-1 flex flex-col">
+
+        <!-- Top Navbar / Header -->
+        <header class="border-b border-[#30363d] bg-[#161b22] px-6 py-3 flex items-center justify-between sticky top-0 z-40">
+            <div class="flex items-center space-x-3">
+                <i class="fa-brands fa-github text-3xl text-white"></i>
+                <span class="font-bold text-white text-lg font-code">github.com / <span class="text-pink-400">birthday-girl</span></span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="hidden md:inline-block text-xs font-mono px-2.5 py-1 rounded-full bg-[#21262d] border border-[#30363d] text-green-400">
+                    ● Status: Celebrating! 🎉
+                </span>
+                <button onclick="triggerConfetti()" class="github-btn px-3 py-1.5 rounded-lg text-sm font-medium flex items-center space-x-1 text-pink-400 border-pink-500/30">
+                    <i class="fa-solid fa-heart"></i>
+                    <span>Send Love</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Container -->
+        <main class="max-w-6xl mx-auto px-4 py-8 w-full flex-1 grid grid-cols-1 md:grid-cols-4 gap-8">
+
+            <!-- Left Sidebar: Profile & Photo -->
+            <div class="md:col-span-1 flex flex-col items-center md:items-start space-y-4">
+                <div class="relative group">
+                    <!-- REPLACE THIS LINK WITH HER PHOTO -->
+                    <img id="profilePhoto" src="mylove.jpg"
+                         alt="Birthday Girl"
+                         class="w-48 h-48 md:w-full md:h-64 rounded-2xl object-cover border-2 border-[#30363d] shadow-xl">
+                    <div class="absolute bottom-3 right-3 bg-[#21262d] px-3 py-1 rounded-full text-xs font-mono border border-[#30363d] text-white shadow">
+                        👑 Queen
+                    </div>
+                </div>
+
+                <div class="w-full text-center md:text-left">
+                    <h1 class="text-2xl font-bold text-white tracking-tight">KAZI ARAFA RAHMAN PRITHA (PRITHA RANI) ❤️</h1>
+                    <h2 class="text-md font-mono text-gray-400 mb-3">@birthday-queen</h2>
+                    <p class="text-sm text-gray-300 mb-4">✨ Spreading smiles, stealing hearts, and leveling up in life today!</p>
+
+                    <div class="flex items-center justify-center md:justify-start space-x-2 text-xs text-gray-400 mb-6">
+                        <i class="fa-solid fa-users"></i>
+                        <span><strong class="text-white">1</strong> follower (You)</span>
+                        <span>·</span>
+                        <i class="fa-solid fa-heart text-pink-500"></i>
+                        <span>Infinite likes</span>
+                    </div>
+
+                    <button onclick="triggerConfetti()" class="w-full py-2 px-4 rounded-lg font-semibold github-green text-sm shadow transition">
+                        🎉 Celebrate Birthday!
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Content Area -->
+            <div class="md:col-span-3 space-y-6">
+
+                <!-- Navigation Tabs -->
+                <div class="flex border-b border-[#30363d] space-x-6 text-sm overflow-x-auto">
+                    <button onclick="switchTab('readme')" id="tab-readme-btn" class="border-b-2 border-pink-500 pb-3 font-semibold text-white flex items-center space-x-2">
+                        <i class="fa-solid fa-book-open text-pink-400"></i>
+                        <span>README.md</span>
+                    </button>
+                    <button onclick="switchTab('repos')" id="tab-repos-btn" class="border-b-2 border-transparent pb-3 font-medium text-gray-400 hover:text-white flex items-center space-x-2">
+                        <i class="fa-solid fa-code-commit text-purple-400"></i>
+                        <span>Repositories <span class="bg-[#21262d] px-2 py-0.5 rounded-full text-xs text-gray-300">3</span></span>
+                    </button>
+                    <button onclick="switchTab('memories')" id="tab-memories-btn" class="border-b-2 border-transparent pb-3 font-medium text-gray-400 hover:text-white flex items-center space-x-2">
+                        <i class="fa-solid fa-calendar-days text-green-400"></i>
+                        <span>Contribution Heatmap</span>
+                    </button>
+                </div>
+
+                <!-- TAB 1: README (Heartfelt Message & Balloons) -->
+                <div id="tab-readme" class="github-card rounded-xl p-6 md:p-8 space-y-6">
+                    <div class="flex items-center justify-between border-b border-[#30363d] pb-4">
+                        <span class="font-mono text-sm text-gray-400 flex items-center space-x-2">
+                            <i class="fa-solid fa-book text-pink-400"></i>
+                            <span>README.md</span>
+                        </span>
+                        <span class="text-xs font-mono bg-pink-500/10 text-pink-400 border border-pink-500/20 px-2 py-1 rounded">
+                            Special Edition v20.26
+                        </span>
+                    </div>
+
+                    <div class="space-y-4 text-gray-300 leading-relaxed">
+                        <h2 class="text-2xl font-bold text-white flex items-center space-x-2">
+                            <span>🎂 Happy Birthday to the Most Wonderful Person! 💖</span>
+                        </h2>
+
+                        <p>
+                            You make my world so much special. You are the reason the world smiles for .. I LOVE YOU <3! Today is all about celebrating you—your radiant smile, your kind heart, and all the incredible joy you bring into my life every single day.
+                        </p>
+
+                        <div class="bg-[#21262d] border-l-4 border-pink-500 p-4 rounded-r-lg my-4">
+                            <p class="italic text-gray-200">
+                                "Meeting you was like finding a bug fix I never knew I needed. You make everything brighter, simpler, and infinitely more beautiful." ✨
+                            </p>
+                        </div>
+
+                        <h3 class="text-lg font-semibold text-white pt-2">🌟 System Specs & Stats:</h3>
+                        <ul class="list-disc list-inside space-y-2 text-sm">
+                            <li><strong class="text-white">Kindness Level:</strong> 100% (Overflow error detected)</li>
+                            <li><strong class="text-white">Smile Quality:</strong> Instantly brightens any room</li>
+                            <li><strong class="text-white">Status:</strong> Officially adored and cherished</li>
+                        </ul>
+
+                        <div class="pt-4 flex flex-wrap gap-3">
+                            <span class="px-3 py-1 bg-pink-500/20 text-pink-300 rounded-full text-xs font-mono border border-pink-500/30">#BestPerson</span>
+                            <span class="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-xs font-mono border border-purple-500/30">#HappyBirthday</span>
+                            <span class="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-xs font-mono border border-blue-500/30">#ForeverMemory</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: REPOSITORIES (Love Notes) -->
+                <div id="tab-repos" class="hidden space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                        <!-- Repo Card 1 -->
+                        <div class="github-card p-5 rounded-xl hover:border-gray-500 transition flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <a href="#" class="text-pink-400 font-semibold hover:underline flex items-center space-x-2">
+                                        <i class="fa-regular fa-folder-open"></i>
+                                        <span>reasons-why-i-love-you</span>
+                                    </a>
+                                    <span class="text-xs px-2 py-0.5 rounded-full border border-gray-600 text-gray-400">Public</span>
+                                </div>
+                                <p class="text-xs text-gray-400 mb-4">A comprehensive list containing your laugh, your caring nature, and how you light up every room.</p>
+                            </div>
+                            <div class="flex items-center space-x-4 text-xs text-gray-400">
+                                <span><span class="inline-block w-2.5 h-2.5 rounded-full bg-pink-500 mr-1"></span>Pure Love</span>
+                                <span><i class="fa-regular fa-star"></i> 520</span>
+                            </div>
+                        </div>
+
+                        <!-- Repo Card 2 -->
+                        <div class="github-card p-5 rounded-xl hover:border-gray-500 transition flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <a href="#" class="text-pink-400 font-semibold hover:underline flex items-center space-x-2">
+                                        <i class="fa-regular fa-folder-open"></i>
+                                        <span>our-favorite-memories</span>
+                                    </a>
+                                    <span class="text-xs px-2 py-0.5 rounded-full border border-gray-600 text-gray-400">Public</span>
+                                </div>
+                                <p class="text-xs text-gray-400 mb-4">Stored moments of endless talks, sweet laughter, and wonderful adventures together.</p>
+                            </div>
+                            <div class="flex items-center space-x-4 text-xs text-gray-400">
+                                <span><span class="inline-block w-2.5 h-2.5 rounded-full bg-purple-500 mr-1"></span>Precious</span>
+                                <span><i class="fa-regular fa-star"></i> 1,314</span>
+                            </div>
+                        </div>
+
+                        <!-- Repo Card 3 -->
+                        <div class="github-card p-5 rounded-xl hover:border-gray-500 transition flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <a href="#" class="text-pink-400 font-semibold hover:underline flex items-center space-x-2">
+                                        <i class="fa-regular fa-folder-open"></i>
+                                        <span>future-adventures</span>
+                                    </a>
+                                    <span class="text-xs px-2 py-0.5 rounded-full border border-gray-600 text-gray-400">Public</span>
+                                </div>
+                                <p class="text-xs text-gray-400 mb-4">Draft plans for all the places we will go and goals we will achieve together.</p>
+                            </div>
+                            <div class="flex items-center space-x-4 text-xs text-gray-400">
+                                <span><span class="inline-block w-2.5 h-2.5 rounded-full bg-green-500 mr-1"></span>Exciting</span>
+                                <span><i class="fa-regular fa-star"></i> 999</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TAB 3: CONTRIBUTION HEATMAP -->
+                <div id="tab-memories" class="hidden github-card rounded-xl p-6 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-white font-semibold text-sm">365 days of thinking about you</h3>
+                        <span class="text-xs text-gray-400">Click any square for a memory note</span>
+                    </div>
+
+                    <!-- Simulated Contribution Grid -->
+                    <div class="overflow-x-auto pb-2">
+                        <div id="heatmapGrid" class="grid grid-flow-col grid-rows-7 gap-1.5 min-w-[500px]">
+                            <!-- Generated via JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Selected Memory Popup Note -->
+                    <div id="memoryNoteBox" class="bg-[#21262d] border border-[#30363d] p-4 rounded-lg text-sm text-gray-300 hidden">
+                        <span class="text-pink-400 font-semibold block mb-1" id="memoryDate">Memory #1</span>
+                        <p id="memoryText">Every talk and chat with you is a new favorite commit in my life story.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-t border-[#30363d] py-6 text-center text-xs text-gray-500 font-mono">
+            Crafted with infinite ❤️ for someone truly special.
+        </footer>
+    </div>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // 1. Blow Candles Animation & Transition
+        function blowCandles() {
+            // Hide flames
+            document.getElementById('candles').style.display = 'none';
+
+            // Trigger confetti blast
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+
+            // Fade out page 1 and reveal page 2 after short delay
+            setTimeout(() => {
+                const page1 = document.getElementById('page1');
+                const page2 = document.getElementById('page2');
+
+                page1.classList.add('opacity-0');
+                setTimeout(() => {
+                    page1.style.display = 'none';
+                    page2.classList.remove('hidden');
+                    // Trigger fade in
+                    setTimeout(() => page2.classList.remove('opacity-0'), 50);
+                    // Initial celebration confetti
+                    triggerConfetti();
+                }, 700);
+            }, 800);
+        }
+
+        // 2. Confetti Button Trigger
+        function triggerConfetti() {
+            confetti({
+                particleCount: 80,
+                spread: 100,
+                origin: { y: 0.4 },
+                colors: ['#ff69b4', '#9370db', '#00ff7f', '#ffffff']
+            });
+        }
+
+        // 3. Tab Switching Logic
+        function switchTab(tabName) {
+            // Buttons
+            document.getElementById('tab-readme-btn').className = "border-b-2 border-transparent pb-3 font-medium text-gray-400 hover:text-white flex items-center space-x-2";
+            document.getElementById('tab-repos-btn').className = "border-b-2 border-transparent pb-3 font-medium text-gray-400 hover:text-white flex items-center space-x-2";
+            document.getElementById('tab-memories-btn').className = "border-b-2 border-transparent pb-3 font-medium text-gray-400 hover:text-white flex items-center space-x-2";
+
+            // Contents
+            document.getElementById('tab-readme').classList.add('hidden');
+            document.getElementById('tab-repos').classList.add('hidden');
+            document.getElementById('tab-memories').classList.add('hidden');
+
+            if (tabName === 'readme') {
+                document.getElementById('tab-readme-btn').className = "border-b-2 border-pink-500 pb-3 font-semibold text-white flex items-center space-x-2";
+                document.getElementById('tab-readme').classList.remove('hidden');
+            } else if (tabName === 'repos') {
+                document.getElementById('tab-repos-btn').className = "border-b-2 border-purple-500 pb-3 font-semibold text-white flex items-center space-x-2";
+                document.getElementById('tab-repos').classList.remove('hidden');
+            } else if (tabName === 'memories') {
+                document.getElementById('tab-memories-btn').className = "border-b-2 border-green-500 pb-3 font-semibold text-white flex items-center space-x-2";
+                document.getElementById('tab-memories').classList.remove('hidden');
+            }
+        }
+
+        // 4. Generate Heatmap Squares dynamically
+        const heatmapGrid = document.getElementById('heatmapGrid');
+        const memories = [
+            "The day we first talked — best notification ever! 💬",
+            "That unforgettable conversation that lasted for hours 🌙",
+            "The first time I saw your wonderful smile in person 😊",
+            "All our endless inside jokes and shared laughs 😂",
+            "Every single moment you made my day instantly better 💖",
+            "Today: Celebrating the absolute best person in the world! 🎂✨"
+        ];
+
+        for (let i = 0; i < 98; i++) {
+            const square = document.createElement('div');
+            square.className = "w-3.5 h-3.5 rounded-sm bg-[#21262d] border border-[#30363d] cursor-pointer transition hover:scale-125";
+
+            // Randomly light up some squares to look like active GitHub contributions
+            const rand = Math.random();
+            if (rand > 0.7) {
+                square.className = "w-3.5 h-3.5 rounded-sm bg-[#238636] border border-[#30363d] cursor-pointer transition hover:scale-125";
+            } else if (rand > 0.5) {
+                square.className = "w-3.5 h-3.5 rounded-sm bg-[#39d353] border border-[#30363d] cursor-pointer transition hover:scale-125";
+            }
+
+            // Click event for memory notes
+            square.addEventListener('click', () => {
+                const noteBox = document.getElementById('memoryNoteBox');
+                const memoryText = document.getElementById('memoryText');
+                const memoryDate = document.getElementById('memoryDate');
+
+                const randomMemory = memories[Math.floor(Math.random() * memories.length)];
+                memoryDate.innerText = `Commit Log #${i + 1} — Special Memory`;
+                memoryText.innerText = randomMemory;
+
+                noteBox.classList.remove('hidden');
+                triggerConfetti();
+            });
+
+            heatmapGrid.appendChild(square);
+        }
+    </script>
+</body>
+</html>
